@@ -26,8 +26,8 @@ This script may have bugs, problems and it could be written without a lot of goo
 Alfredo IZ7BOJ iz7boj[--at--]gmail.com
 
 # LICENSE
-#You can modify this program, but please give a credit to original author. Program is free for non-commercial use only.
-#(C) Alfredo IZ7BOJ 2018
+You can modify this program, but please give a credit to original author. Program is free for non-commercial use only.
+(C) Alfredo IZ7BOJ 2018
 
 # Version 
 0.1 beta
