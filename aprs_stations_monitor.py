@@ -31,7 +31,7 @@ import telegram_send
 # CONFIGURATION SECTION
 # DECLARE EVERY PARAMETER BEFORE USING THIS SCRIPT
 
-apikey = '42447.qJOoyDfom0jANqXS' # insert your personal API key provided by aprs.fi (account required)
+apikey = 'xxxxxxxxxxx' # insert your personal API key provided by aprs.fi (account required)
 apiurl = 'api.aprs.fi' #aprs.fi api url. This should be changed only if notified by aprs.fi sysop
 stations = 'IQ7NK-11,IW7EAP-11,IQ7YP,IZ7UNK-11,IK7EJT-10,IU7CMG-11,IR7T,IR7DD-11,IQ7GC-11' #insert stations to monitor, separated by comma
 timeout = 5400 #timeout in seconds used to determine the station vitality
