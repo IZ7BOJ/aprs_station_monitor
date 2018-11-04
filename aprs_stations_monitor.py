@@ -35,8 +35,9 @@ apikey = 'xxxxxxxxxxx' # insert your personal API key provided by aprs.fi (accou
 apiurl = 'api.aprs.fi' #aprs.fi api url. This should be changed only if notified by aprs.fi sysop
 stations = 'IQ7NK-11,IW7EAP-11,IQ7YP,IZ7UNK-11,IK7EJT-10,IU7CMG-11,IR7T,IR7DD-11,IQ7GC-11' #insert stations to monitor, separated by comma
 timeout = 5400 #timeout in seconds used to determine the station vitality
-sleeptime = 30 #time in seconds between queries
+sleeptime = 1800 #time in seconds between queries
 maxattempts = 3 #maximum connection attempts to aprs.fi database before exit
+sleepattempts = 60 #time between connection attempts to aprs.fi
 logfile = '/var/log/aprsdash.log' #file to be written for the log (with the path)
 telegram_conf_file = '/home/pi/.config/telegram-send.conf'
 # END OF CONFIGURATION SECTION
@@ -61,6 +62,7 @@ try:
 					print "Couldn't query aprs.fi! Let's try again.."
 					logging.debug("Couldn't query aprs.fi! Let's try again..")
 					i += 1
+					time.sleep(sleepattempts)
 				else:
 					print("Couldn't query aprs.fi! Maximum attempts reached. Exiting...")
 					logging.debug("Couldn't query aprs.fi! Maximum attempts reached. Exiting...")
@@ -93,7 +95,7 @@ try:
 				if state_array[j]==1:
 					state_array[j]=0
 					message = 'WARNING: Station ' + name + ' seems to be inactive from ' + str(lasttime_utc) +' GMT!'
-					telegram_send.send(messages=[message], conf="/home/pi/.config/telegram-send.conf")
+					telegram_send.send(messages=[message], conf=telegram_conf_file)
 					logging.debug("Station " + name + " -->Dead")
 			else:
 				# Dead->Alive
