@@ -59,7 +59,7 @@ try:
 				notconnected=0
 			except httplib.HTTPException:
 				if i<maxattempts:
-					print "Couldn't query aprs.fi! Let's try again.."
+					print("Couldn't query aprs.fi! Let's try again..")
 					logging.debug("Couldn't query aprs.fi! Let's try again..")
 					i += 1
 					time.sleep(sleepattempts)
@@ -70,7 +70,7 @@ try:
 		try:
 			response = conn.getresponse() #get response
 		except:
-			print "Couldn't get a response from aprs.fi! Exiting..."
+			print("Couldn't get a response from aprs.fi! Exiting...")
 			logging.debug("Couldn't get a response from aprs.fi! Exiting..")
 			conn.close()
 			sys.exit()
@@ -79,7 +79,7 @@ try:
 		try:
 			jresult  = json.loads(result) #json parse the results
 		except:
-			print "Couldn't parse JSON from aprs.fi! Exiting..."
+			print("Couldn't parse JSON from aprs.fi! Exiting...")
 			logging.debug("Couldn't parse JSON from aprs.fi! Exiting...")
 			conn.close()
 			sys.exit()
