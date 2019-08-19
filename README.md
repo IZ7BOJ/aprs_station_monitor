@@ -19,6 +19,42 @@ telegram-send --configure-channel to send to a channel.
 
 Then, every parameter of the config section of the script must be declared, including aprs.fi API personal Key (an account on aprs.fi is required)
 
+You can start the script automatically using systemd. Follow these instrunctions:
+
+Create a systemd service file using:
+$ sudo nano /lib/systemd/system/aprs_station_monitor.service with the contents as shown below
+
+[Unit]
+Description=run fan when hot
+After=meadiacenter.service
+
+[Service]
+# If User and Group are not specified as root, then it won't work
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/bin/python /home/pi/Applications/aprs_station_monitor.py #change the path with yours!!
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
+# end of the run-fan.service
+
+Type "ctrl-o", ENTER, "ctrl-x" to save and exit the nano editor
+
+After any changes to /lib/systemd/system/run-fan.service:
+sudo systemctl daemon-reload
+sudo systemctl enable aprs_station_monitor.service
+sudo reboot
+
+Ensure the run-fan.service in systemd is enabled and running:
+systemctl list-unit-files | grep enabled
+systemctl | grep running | grep fan
+systemctl status aprs_station_monitor.service -l
+
+If there are any issues with starting the script using systemd, then examine the journal using:
+sudo journalctl -u run-fan.service
+
 # SOFTWARE STABILITY
 This script may have bugs, problems and it could be written without a lot of good programming rules. But it works for me.
 
