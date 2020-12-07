@@ -42,18 +42,18 @@ WantedBy=multi-user.target
 
 Type "ctrl-o", ENTER, "ctrl-x" to save and exit the nano editor
 
-After any changes to /lib/systemd/system/run-fan.service:
+After any changes to /lib/systemd/system/aprs_station_monitor.service:
 sudo systemctl daemon-reload
 sudo systemctl enable aprs_station_monitor.service
 sudo reboot
 
-Ensure the run-fan.service in systemd is enabled and running:
+Ensure the aprs_station_monitor.service in systemd is enabled and running:
 systemctl list-unit-files | grep enabled
-systemctl | grep running | grep fan
+systemctl | grep running | grep aprs
 systemctl status aprs_station_monitor.service -l
 
 If there are any issues with starting the script using systemd, then examine the journal using:
-sudo journalctl -u run-fan.service
+sudo journalctl -u aprs_station_monitor.service
 
 # SOFTWARE STABILITY
 This script may have bugs, problems and it could be written without a lot of good programming rules. But it works for me.
