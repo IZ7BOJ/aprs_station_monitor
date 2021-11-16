@@ -25,7 +25,7 @@ Create a systemd service file using:
 $ sudo nano /lib/systemd/system/aprs_station_monitor.service with the contents as shown below
 
 [Unit]
-Description=run fan when hot
+Description=telegram alert for aprs stations
 After=meadiacenter.service
 
 [Service]
@@ -38,7 +38,7 @@ Restart=Always
 
 [Install]
 WantedBy=multi-user.target
-# end of the run-fan.service
+
 
 Type "ctrl-o", ENTER, "ctrl-x" to save and exit the nano editor
 
