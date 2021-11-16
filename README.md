@@ -29,7 +29,6 @@ Description=telegram alert for aprs stations
 After=meadiacenter.service
 
 [Service]
-# If User and Group are not specified as root, then it won't work
 User=root
 Group=root
 Type=simple
